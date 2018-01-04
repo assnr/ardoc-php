@@ -1,0 +1,28 @@
+{
+	"name" : "exsyst/swagger",
+	"description" : "A php library to manipulate Swagger specifications",
+	"type" : "library",
+	"license" : "MIT",
+	"authors" : [
+		{
+			"name" : "Ener-Getick",
+			"email" : "egetick@gmail.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"EXSyst\\Component\\Swagger\\" : "src/"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"EXSyst\\Component\\Swagger\\tests\\" : "tests/"
+		}
+	},
+	"require" : {
+		"php" : "^7.0"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^5.0"
+	}
+}
