@@ -4,5 +4,10 @@
  *
  * @author ycassnr <ycassnr@gmail.com>
  */
-return array(
-);
+return [
+    'docMenu' => [
+        'arphpdev' => [
+            'prefix' => '/var/www/html/arphpdev/ori/ctl/main/'
+        ]
+    ],
+];

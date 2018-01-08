@@ -37,7 +37,7 @@
                 $funcParamsReadUnit = [];
                 $curParam = trim($funcparamsArr[$i]);
                 $funcDesc = $param[$i];
-                $funcDesc = preg_replace('#\s+#', ' ', $funcDesc);
+                $funcDesc = preg_replace('#(\s)+#', ' ', $funcDesc);
                 list($type, $pname, $pdes) = explode(' ', $funcDesc);
 
                 if (strpos($curParam, '=') === false) :

@@ -56,20 +56,12 @@ class Annotation
             'namespace' => null, // Espace de nom
             'className' => '', // Collection de classe
         );
-        $resParse = token_get_all($this->fileContent); // Parse PHP file
 
-        foreach ($resParse as $v) {
-            if (is_array($v)) :
-                $v['token_name'] = token_name($v[0]);
-                if ($v[2] === 2) :
-                    $class['doc'] = $this->parseDocComment($v[1]);
-                    continue;
-                elseif ($v[2] === 19) :
-                    $class['cdoc'] = $this->parseClassComment($v[1]);
-                    continue;
-                endif;
-            endif;
-        }
+        preg_match('#(/\*\*.*)namespace #smU', $this->fileContent, $matchDocComment);
+        $class['doc'] = $this->parseDocComment($matchDocComment[1]);
+
+        preg_match('#use .*(/\*\*.*)class #smU', $this->fileContent, $matchcDocComment);
+        $class['cdoc'] = $this->parseClassComment($matchcDocComment[1]);
 
         preg_match('#namespace (\S+);\s{1}#sU', $this->fileContent, $matchNameSpace);
         $class['namespace'] = $matchNameSpace[1];
@@ -151,6 +143,8 @@ class Annotation
                 $tempMatchNodeVal = $doc[$matchP[1]];
                 $doc[$matchP[1]] = [];
                 $doc[$matchP[1]][] = $tempMatchNodeVal;
+            elseif (!isset($doc[$matchP[1]]) && $matchP[1] == 'param') :
+                $doc[$matchP[1]] = [];
             endif;
             $nodeVal = trim(substr($params, strlen($matchP[1])));
             if (isset($doc[$matchP[1]])) :
