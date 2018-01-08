@@ -59,7 +59,7 @@ class Api extends Controller
      *
      * @return void
     */
-    public function docjson(string $apiname = '')
+    public function docjson($apiname = '')
     {
         $parseFile = '';
         if ($apiname) :
