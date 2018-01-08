@@ -1,6 +1,5 @@
 {
     "require": {
         "assnr/arphp": "^5.0",
-        "nelmio/api-doc-bundle": "dev-master"
     }
 }
