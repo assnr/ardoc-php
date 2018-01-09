@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ar' => array($vendorDir . '/assnr/arphp/src'),
-    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
 );
